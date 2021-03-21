@@ -4,6 +4,7 @@ import * as actionTypes from './actionTypes';
 const initialState = Map({
 	items: Map(),
 	activeUser: null,
+	
 	formFields: {
 		userName: '',
 		userId: '',
@@ -19,13 +20,17 @@ export default function users(state = initialState, action) {
 				userId,
 			}))
 		}
+		
 		case actionTypes.SET_ACTIVE_USER: {
 			return state.set('activeUser', action.userId);
 		}
+		
 		case actionTypes.REMOVE_ACTIVE_USER:
 			return state.set('activeUser', null);
+			
 		case actionTypes.SET_USER_FIELDS:
 			return state.set('formFields', action.formFields)
+		
 		default:
 			return state
 	}
