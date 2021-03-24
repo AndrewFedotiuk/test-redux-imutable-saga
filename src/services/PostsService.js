@@ -1,14 +1,11 @@
-import Service from "./Service.base";
 import {postParser} from './parsers/posts';
 
-export default class PostsService extends Service {
-  getResource = async (url) => {
-    const data = this.getData(url);
-    return data.map(postParser);
-  };
-
+export default class PostsService {
+  constructor(service){
+    this.service = service;
+  }
   getPostById = async (userId) => {
-    const data = this.getData(`posts?userId=${userId}`);
-    return data;
+    const data = await this.service.getData(`posts?userId=${userId}`);
+    return data?.map(postParser);
   };
 }

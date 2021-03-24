@@ -1,9 +1,9 @@
 import PostsService from "./PostsService";
+import Service from "./Service.base";
 
+const APIService = new Service("https://jsonplaceholder.typicode.com/");
 class API {
-  #URL = "https://jsonplaceholder.typicode.com/";
-  
-  postsService = new PostsService(this.#URL);
+  static postsService = new PostsService(APIService);
 }
 
-export default new API();
+export default API;
